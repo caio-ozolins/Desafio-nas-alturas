@@ -8,12 +8,13 @@ public class SceneDirector : MonoBehaviour
 {
     [SerializeField]
     private GameObject gameOver;
-
+    private Score _score;
     private Plane _plane;
 
     private void Start()
     {
         _plane = FindObjectOfType<Plane>();
+        _score = FindObjectOfType<Score>();
     }
 
     public void EndGame()
@@ -30,6 +31,7 @@ public class SceneDirector : MonoBehaviour
         Time.timeScale = 1;
         _plane.Restart();
         DestroyObstacle();
+        _score.RestartScore();
     }
 
     private void DestroyObstacle()
